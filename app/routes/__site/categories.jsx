@@ -1,5 +1,4 @@
 import { useLoaderData } from "@remix-run/react";
-import { CATEGORIES as categories } from "~/../data/dummy";
 import CategoriesList from "~/components/site/category/CategoriesList";
 import { getCategories } from "~/data/blog.server";
 
