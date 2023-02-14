@@ -1,0 +1,83 @@
+html {
+  font-family: "Rubik", sans-serif;
+}
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-gray-10: #f6f2fc;
+  --color-gray-50: #f0eafa;
+  --color-gray-100: #ded8e8;
+  --color-gray-200: #c1bcc9;
+  --color-gray-300: #aba6b3;
+  --color-gray-400: #96929d;
+  --color-gray-500: #7f7b85;
+  --color-gray-600: #69666f;
+  --color-gray-700: #514f55;
+  --color-gray-800: #403e44;
+  --color-gray-900: #2e2c32;
+
+  --color-primary-10: #ede3fd;
+  --color-primary-50: #c9aaff;
+  --color-primary-100: #af82fc;
+  --color-primary-200: #975bfd;
+  --color-primary-300: #8845fc;
+  --color-primary-400: #7223fa;
+  --color-primary-500: #5d00ff;
+  --color-primary-600: #5402e3;
+  --color-primary-700: #4a02c6;
+  --color-primary-800: #3c02a1;
+
+  --color-secondary-500: #9900ff;
+  --color-secondary-600: #8400ff;
+  --color-secondary-700: #7500ce;
+}
+#site-header a.active {
+  color: purple;
+  font-weight: bold;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal {
+  position: fixed;
+  top: 8vh;
+  width: 30rem;
+  border-radius: 6px;
+  border: none;
+  background-color: var(--color-gray-50);
+  animation: fade-slide-down 0.5s ease-out forwards;
+}
+
+.form-data label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-data input[type=text],
+.form-data select,
+.form-data textarea {
+  line-height: 40px;
+  border-radius: 2px;
+  width: 100%;
+  border: 1px solid var(--color-gray-300);
+  padding: 0 10px;
+  background-color: white;
+}
+
+.form-data textarea {
+  line-height: 1.2em;
+  padding: 10px;
+}
+
+.form-data select {
+  padding: 10px;
+}
