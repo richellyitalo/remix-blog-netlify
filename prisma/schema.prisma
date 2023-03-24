@@ -6,12 +6,12 @@ generator client {
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "mysql"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        Int   @id @default(autoincrement())
   email     String   @unique
   password  String
   posts     Post[]
@@ -20,22 +20,37 @@ model User {
 }
 
 model Post {
-  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  id          Int     @id @default(autoincrement())
   title       String
-  content     String
-  categoryIDS String[]   @db.ObjectId
-  categories  Category[] @relation(fields: [categoryIDS], references: [id])
+  content     String @db.Text
   createdAt   DateTime   @default(now())
   updatedAt   DateTime   @updatedAt
   user        User       @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId      String     @db.ObjectId
+  userId      Int
+
+  categories Category[]
+
+  // categories Post_categories_category[]
 }
 
 model Category {
-  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  id        Int   @id @default(autoincrement())
   name      String
-  postIDS   String[] @db.ObjectId
-  posts     Post[]   @relation(fields: [postIDS], references: [id])
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  posts Post[]
+  
+  // posts Post_categories_category[]
 }
+
+// model Post_categories_category {
+//   postId     Int
+//   categoryId Int
+//   category   Category @relation(fields: [categoryId], references: [id])
+//   post       Post     @relation(fields: [postId], references: [id])
+
+//   @@id([postId, categoryId])
+//   @@index([postId], name: "IDX_93b566d522b73cb8bc46f7405b")
+//   @@index([categoryId], name: "IDX_a5e63f80ca58e7296d5864bd2d")
+// }

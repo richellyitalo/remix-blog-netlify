@@ -2,13 +2,13 @@ import { Link, useLoaderData } from "@remix-run/react";
 import { getPost } from "~/data/blog.server";
 
 export function loader({ params }) {
-  const postId = params.id;
+  const postId = parseInt(params.id);
   return getPost(postId);
 }
 
 export function meta({ data : post, params, parentsData }) {
   const postInParent = parentsData["routes/__site"].posts.find(
-    (postParent) => postParent.id === params.id
+    (postParent) => postParent.id === parseInt(params.id)
   );
 
   // or just use variable "data:post"

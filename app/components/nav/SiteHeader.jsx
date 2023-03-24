@@ -38,7 +38,7 @@ export default function SiteHeader() {
 
       <p className="text-right m-0">
         <a
-          href="https://github.com/richellyitalo?tab=repositories&q=csgo-information"
+          href="https://github.com/richellyitalo/remix-blog-netlify"
           rel="noreferrer"
           target="_blank"
           className="text-sm text-purple-700 hover:text-yellow-600 hover:no-underline"

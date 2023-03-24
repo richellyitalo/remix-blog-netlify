@@ -23,7 +23,7 @@ export default function CategoryForm() {
       (match) => match.id === "routes/admin/categories"
     ).data;
 
-    category = categories.find((category) => category.id === params.categoryId);
+    category = categories.find((category) => category.id === parseInt(params.categoryId));
   }
 
   const defaultValues =

@@ -6,7 +6,7 @@ import { deleteCategory, updateCategory, validateCategoryRequest } from "~/data/
 
 export async function action({ request, params }) {
   const formData = await request.formData();
-  const categoryId = params.categoryId;
+  const categoryId = parseInt(params.categoryId);
   const categoryData = Object.fromEntries(formData);
 
   if (request.method === "PATCH") {

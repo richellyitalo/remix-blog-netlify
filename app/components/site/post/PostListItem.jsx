@@ -10,7 +10,7 @@ export default function PostListItem({ post }) {
       <h2 className="text-lg font-semibold">{post.title}</h2>
       <div
         className="pb-2 entry-text text-slate-500"
-        dangerouslySetInnerHTML={createMarkup(post.content)}
+        dangerouslySetInnerHTML={createMarkup(post.content.slice(0, 200))}
       />
       <div>
         {post.categories &&

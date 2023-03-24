@@ -16,13 +16,12 @@ export function meta({ params, parentsData }) {
 
   if (params.postId) {
     const post = parentsData["routes/admin/posts"].find(
-      (post) => post.id === params.postId
+      (post) => post.id === parseInt(params.postId)
     );
+
     title = `Editing post: ${post.title}`;
   }
 
-  // console.log(params)
-  // conso
   return {
     title,
   };
@@ -36,7 +35,7 @@ export async function action({ request, params }) {
     content: formData.get("content"),
     categories: formData.getAll("categories[]"),
   };
-  const postId = params.postId;
+  const postId = parseInt(params.postId);
 
   const postEntity = await getPost(postId);
 

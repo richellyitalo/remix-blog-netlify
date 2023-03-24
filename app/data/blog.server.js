@@ -72,7 +72,7 @@ export async function addPost(postData, userId) {
         title: postData.title,
         content: postData.content,
         categories: {
-          connect: postData?.categories.map((id) => ({ id })),
+          connect: postData?.categories.map((id) => ({ id: parseInt(id) })),
         },
         user: {
           connect: { id: userId },
@@ -80,7 +80,7 @@ export async function addPost(postData, userId) {
       },
     });
   } catch (error) {
-    throw new Error("Failed to add post");
+    throw new Error("Failed to add post" + error.message);
   }
 }
 
@@ -92,7 +92,7 @@ export async function updatePost(id, postData) {
         title: postData.title,
         content: postData.content,
         categories: {
-          set: postData?.categories.map((id) => ({ id })),
+          set: postData?.categories.map((id) => ({ id: parseInt(id) })),
         },
       },
     });
@@ -168,7 +168,7 @@ export async function getCategories() {
 export async function getCategory(categoryId) {
   try {
     return await prisma.category.findUniqueOrThrow({
-      where: { id: categoryId },
+      where: { id: parseInt(categoryId) },
       include: {
         posts: true,
       },

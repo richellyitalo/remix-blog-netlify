@@ -23,7 +23,7 @@ export default function PostForm({ categories = [] }) {
       (match) => match.id === "routes/admin/posts"
     ).data;
 
-    post = posts.find((post) => post.id === params.postId);
+    post = posts.find((post) => post.id === parseInt(params.postId));
   }
 
   const isSubmitting = navigation.state !== "idle";
